@@ -20,6 +20,162 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
     { import = "plugins" },
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      opts = {
+        colorscheme = "catppuccin-macchiato",
+      },
+    },
+    { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
+    { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.lang.elixir" },
+    { import = "lazyvim.plugins.extras.lang.go" },
+    { import = "lazyvim.plugins.extras.lang.rust" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
+    { import = "lazyvim.plugins.extras.lang.yaml" },
+    { import = "lazyvim.plugins.extras.lang.cmake" },
+    { import = "lazyvim.plugins.extras.lang.clangd" },
+    { import = "lazyvim.plugins.extras.lang.docker" },
+    { import = "lazyvim.plugins.extras.lang.helm" },
+    { import = "lazyvim.plugins.extras.lang.sql" },
+    { import = "lazyvim.plugins.extras.lang.toml" },
+    { "arcticicestudio/nord-vim" },
+    { "rebelot/kanagawa.nvim" },
+    { "neanias/everforest-nvim" },
+    { "dracula/vim" },
+    {
+      "folke/tokyonight.nvim",
+      lazy = true,
+      opts = {
+        style = "moon",
+        styles = {
+          comments = { italic = false },
+          keywords = { italic = false },
+          functions = {},
+          variables = {},
+        },
+        transparent = true,
+      },
+    },
+    {
+      "catppuccin/nvim",
+      lazy = true,
+      name = "catppuccin",
+      opts = {
+        integrations = {
+          aerial = true,
+          alpha = true,
+          cmp = true,
+          dashboard = true,
+          flash = true,
+          gitsigns = true,
+          headlines = true,
+          illuminate = true,
+          indent_blankline = { enabled = true },
+          leap = true,
+          lsp_trouble = true,
+          mason = true,
+          markdown = true,
+          mini = true,
+          native_lsp = {
+            enabled = true,
+            underlines = {
+              errors = { "undercurl" },
+              hints = { "undercurl" },
+              warnings = { "undercurl" },
+              information = { "undercurl" },
+            },
+          },
+          navic = { enabled = true, custom_bg = "lualine" },
+          neotest = true,
+          neotree = true,
+          noice = true,
+          notify = true,
+          semantic_tokens = true,
+          telescope = true,
+          treesitter = true,
+          treesitter_context = true,
+          which_key = true,
+        },
+        no_italic = true,
+        no_bold = true,
+        no_underline = true,
+      },
+    },
+    {
+      "neovim/nvim-lspconfig",
+      opts = {
+        inlay_hints = { enabled = false },
+        servers = {
+          lua_ls = {
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = {},
+                },
+              },
+            },
+          },
+          gopls = {
+            settings = {
+              gopls = {
+                analyses = {
+                  fieldalignment = false,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    {
+      "nvim-treesitter/nvim-treesitter",
+      opts = {
+        highlight = { enable = true },
+        indent = { enable = true },
+        ensure_installed = {
+          "graphql",
+        },
+      },
+    },
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+      opts = {
+        filesystem = {
+          filtered_items = {
+            visible = true,
+            show_hidden_count = true,
+            hide_dotfiles = false,
+            hide_gitignored = true,
+            hide_by_name = {},
+            never_show = {},
+          },
+        },
+      },
+      keys = {
+        {
+          "<leader>e",
+          function()
+            require("neo-tree.command").execute({ action = "focus" })
+          end,
+          desc = "Explorer NeoTree",
+        },
+      },
+    },
+    {
+      "nvim-lualine/lualine.nvim",
+      event = "VeryLazy",
+      opts = function()
+        return {
+          options = {
+            component_separators = "",
+            section_separators = "",
+          },
+        }
+      end,
+    },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
